@@ -34,8 +34,8 @@ func (c *Client) GetUser(opts GetUserOpts) (User, error) {
 }
 
 // GetUserToken calls /users/{userId}/token
-func (c *Client) GetUserToken(opts GetUserTokenOpts) (User, error) {
-	var ret = User{}
+func (c *Client) GetUserToken(opts GetUserTokenOpts) (string, error) {
+	var ret string
 	return ret, c.requestV2(requestV2Opts{
 		Method:        Get,
 		Path:          fmt.Sprintf("users/%s/token", opts.ID),
