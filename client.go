@@ -57,9 +57,9 @@ func NewClient(apiKey string, apiSecret string) *Client {
 }
 
 type requestV2Opts struct {
-	Client         *Client
-	Method         HTTPMethod
-	URLParameters  interface{}
+	Client        *Client
+	Method        HTTPMethod
+	URLParameters interface{}
 	Path           string
 	DataParameters interface{}
 	Ret            interface{}

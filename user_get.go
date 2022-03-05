@@ -1,6 +1,8 @@
 package zoom
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // GetUserPath - v2 path for getting a specific user
 const GetUserPath = "/users/%s"
@@ -8,12 +10,6 @@ const GetUserPath = "/users/%s"
 // GetUserOpts contains options for GetUser
 type GetUserOpts struct {
 	EmailOrID string         `url:"-"`
-	LoginType *UserLoginType `url:"login_type,omitempty"` // use pointer so it can be null
-}
-
-// GetUserTokenOpts contains options for GetUserToken
-type GetUserTokenOpts struct {
-	ID        string         `url:"-"`
 	LoginType *UserLoginType `url:"login_type,omitempty"` // use pointer so it can be null
 }
 
@@ -33,13 +29,31 @@ func (c *Client) GetUser(opts GetUserOpts) (User, error) {
 	})
 }
 
+// GetUserTokenOpts contains options for GetUserToken
+type GetUserTokenOpts struct {
+	Id   string `url:"-"`
+	Type string `url:"type,omitempty"`
+	TTL  int    `url:"ttl,omitempty"`
+}
+
+// TokenResponse represents response of GetUserToken()
+type TokenResponse struct {
+	token string
+}
+
 // GetUserToken calls /users/{userId}/token
-func (c *Client) GetUserToken(opts GetUserTokenOpts) (string, error) {
-	var ret string
-	return ret, c.requestV2(requestV2Opts{
+func GetUserToken(opt GetUserTokenOpts) (string, error) {
+	var ret map[string]interface{}
+	err := defaultClient.requestV2(requestV2Opts{
 		Method:        Get,
-		Path:          fmt.Sprintf("users/%s/token", opts.ID),
-		URLParameters: opts,
+		Path:          fmt.Sprintf("/users/%s/token", opt.Id),
+		URLParameters: opt,
 		Ret:           &ret,
 	})
+
+	if err != nil {
+		fmt.Printf("=========== ZAK err %+v\n", err)
+	}
+
+	return ret["token"].(string), err
 }

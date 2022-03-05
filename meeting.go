@@ -121,14 +121,14 @@ type (
 		UUID              string        `json:"uuid,omitempty"`
 		ID                int           `json:"id,omitempty"`
 		HostID            string        `json:"host_id,omitempty"`
-		Topic             string        `json:"topic"`
-		Type              MeetingType   `json:"type"`
-		Status            MeetingStatus `json:"status"`
-		StartTime         *Time         `json:"start_time"`
-		Duration          int           `json:"duration"`
-		Timezone          string        `json:"timezone"`
-		CreatedAt         *Time         `json:"created_at"`
-		Agenda            string        `json:"agenda"`
+		Topic     string        `json:"topic"`
+		Type      MeetingType   `json:"type"`
+		Status    MeetingStatus `json:"status"`
+		StartTime *Time         `json:"start_time"`
+		Duration  int           `json:"duration"`
+		Timezone  string        `json:"timezone"`
+		CreatedAt *Time         `json:"created_at"`
+		Agenda    string        `json:"agenda"`
 		StartURL          string        `json:"start_url"`
 		JoinURL           string        `json:"join_url"`
 		Password          string        `json:"password"`
@@ -151,9 +151,9 @@ type (
 
 	// Occurrence is an occurrence object
 	Occurrence struct {
-		ID        int    `json:"occurrence_id"`
-		StartTime *Time  `json:"start_time"`
-		Duration  int    `json:"duration"`
+		ID        int   `json:"occurrence_id"`
+		StartTime *Time `json:"start_time"`
+		Duration  int   `json:"duration"`
 		Status    string `json:"status"`
 	}
 
@@ -201,8 +201,8 @@ type (
 		Country     string                 `json:"country"`
 		CountryName string                 `json:"country_name"`
 		City        string                 `json:"city"`
-		Number      string                 `json:"number"`
-		Type        GlobalDialInNumberType `json:"type"`
+		Number string                 `json:"number"`
+		Type   GlobalDialInNumberType `json:"type"`
 	}
 
 	// Recurrence of the meeting

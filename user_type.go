@@ -85,13 +85,13 @@ func (t UserType) String() (str string) {
 type User struct {
 	Email                            string   `json:"email"`
 	ID                               string   `json:"id"`
-	AccountID                        string   `json:"account_id"`
-	CreatedAt                        Time     `json:"created_at,string"`
-	FirstName                        string   `json:"first_name"`
+	AccountID   string   `json:"account_id"`
+	CreatedAt   Time     `json:"created_at,string"`
+	FirstName   string   `json:"first_name"`
 	LastName                         string   `json:"last_name"`
-	PicURL                           string   `json:"pic_url"`
-	Type                             UserType `json:"type"`
-	DisableChat                      bool     `json:"disable_chat"`
+	PicURL      string   `json:"pic_url"`
+	Type        UserType `json:"type"`
+	DisableChat bool     `json:"disable_chat"`
 	EnableE2eEncryption              bool     `json:"enable_e2e_encryption"`
 	EnableSilentMode                 bool     `json:"enable_silent_mode"`
 	DisableGroupHd                   bool     `json:"disable_group_hd"`

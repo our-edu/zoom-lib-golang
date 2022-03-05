@@ -8,9 +8,9 @@ type (
 
 	// ListMeetingsOptions contains options for ListMeetings
 	ListMeetingsOptions struct {
-		HostID     string          `url:"-"`
-		Type       ListMeetingType `url:"type,omitempty"`
-		PageSize   *int            `url:"page_size,omitempty"`   // Default: 30, Maximum: 300
+		HostID   string          `url:"-"`
+		Type     ListMeetingType `url:"type,omitempty"`
+		PageSize *int            `url:"page_size,omitempty"`   // Default: 30, Maximum: 300
 		PageNumber *int            `url:"page_number,omitempty"` // Default: 1
 	}
 

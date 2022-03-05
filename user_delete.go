@@ -7,9 +7,9 @@ const DeleteUserPath = "/users/%s"
 
 // DeleteUserOptions are the options to delete a user with
 type DeleteUserOptions struct {
-	EmailOrID         string           `url:"-"`
-	Action            DeleteUserAction `url:"action,omitempty"`
-	TransferEmail     string           `url:"transfer_email,omitempty"`
+	EmailOrID     string           `url:"-"`
+	Action        DeleteUserAction `url:"action,omitempty"`
+	TransferEmail string           `url:"transfer_email,omitempty"`
 	TransferMeeting   bool             `url:"transfer_meeting,omitempty"`
 	TransferWebinar   bool             `url:"transfer_webinar,omitempty"`
 	TransferRecording bool             `url:"transfer_recording,omitempty"`
