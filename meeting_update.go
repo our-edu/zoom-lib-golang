@@ -1,24 +1,29 @@
 package zoom
 
-import "fmt"
+import (
+	"fmt"
+)
 
-// UpdateMeetingOptions are the options to update a meeting
-type UpdateMeetingOptions struct {
-	MeetingID int `url:"-"`
-	Body      interface{}
+// UpdateMeetingStatusOptions are the options to update a meeting
+type UpdateMeetingStatusOptions struct {
+	MeetingID int    `url:"-"`
+	Action    string `json:"action,omitempty"`
 }
 
-// UpdateStatusMeetingPath UpdateMeetingPath - v2 retrieve the details of a meeting
-const UpdateStatusMeetingPath = "/meetings/%d/status"
+// UpdateMeetingStatusPath UpdateMeetingPath - v2 retrieve the details of a meeting
+const UpdateMeetingStatusPath = "/meetings/%d/status"
 
 // UpdateStatus calls PUT /meetings/{ID}/status
-func (c *Client) UpdateStatus(opts UpdateMeetingOptions) (Meeting, error) {
-	var ret = Meeting{}
-	return ret, c.requestV2(requestV2Opts{
+func UpdateStatus(opts UpdateMeetingStatusOptions) error {
+	return defaultClient.UpdateStatus(opts)
+}
+
+// UpdateStatus calls PUT /meetings/{ID}/status
+func (c *Client) UpdateStatus(opts UpdateMeetingStatusOptions) error {
+	return c.requestV2(requestV2Opts{
 		Method:         Put,
-		Path:           fmt.Sprintf(UpdateStatusMeetingPath, opts.MeetingID),
-		URLParameters:  &opts,
-		DataParameters: &opts.Body,
-		Ret:            &ret,
+		Path:           fmt.Sprintf(UpdateMeetingStatusPath, opts.MeetingID),
+		DataParameters: &opts,
+		HeadResponse:   true,
 	})
 }
